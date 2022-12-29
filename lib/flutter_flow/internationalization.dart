@@ -145,11 +145,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'u4s3i1gm': {
       'en': 'Logged in? ',
-      'ko': '',
+      'ko': '로그인 했나요?',
     },
     'h47rmugw': {
       'en': 'Register',
-      'ko': '',
+      'ko': '회원 가입 / 로그인',
     },
     '89czqcbo': {
       'en': 'Logout',
