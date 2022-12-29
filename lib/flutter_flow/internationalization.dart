@@ -143,9 +143,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Main
   {
-    'q5g5ud19': {
+    'u4s3i1gm': {
+      'en': 'Logged in? ',
+      'ko': '',
+    },
+    'h47rmugw': {
       'en': 'Register',
       'ko': '',
+    },
+    '89czqcbo': {
+      'en': 'Logout',
+      'ko': '로그아웃',
     },
   },
   // Miscellaneous
