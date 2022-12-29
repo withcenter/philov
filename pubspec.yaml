@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -38,7 +38,8 @@ dependencies:
   firebase_core: 2.4.0
   firebase_core_platform_interface: 4.5.2
   firebase_core_web: 2.0.2
-  fireflow: ^0.0.1
+  fireflow:
+    path: ../..
   flutter_animate: 1.0.0
   flutter_cache_manager: 3.3.0
   font_awesome_flutter: 10.1.0
@@ -64,7 +65,6 @@ dependencies:
   timeago: 3.2.2
   url_launcher: 6.1.5
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
@@ -81,7 +81,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -96,7 +95,6 @@ flutter:
     - assets/lottie_animations/
     - assets/rive_animations/
     - assets/pdfs/
-
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
