@@ -1,3 +1,4 @@
+import '../components/main_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../custom_code/actions/index.dart' as actions;
@@ -56,10 +57,7 @@ class _EntryWidgetState extends State<EntryWidget> {
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [],
-          ),
+          child: MainWidget(),
         ),
       ),
     );

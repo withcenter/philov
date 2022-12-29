@@ -90,6 +90,72 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '',
     },
   },
+  // Login
+  {
+    '0sy4hdd2': {
+      'en': 'Login',
+      'ko': '로그인',
+    },
+    '2ajbg1vt': {
+      'en': 'Input email address',
+      'ko': '메일 주소를 입력하세요.',
+    },
+    'p27py12t': {
+      'en': 'Email',
+      'ko': '이메일',
+    },
+    '0o2c84bp': {
+      'en': 'Input password',
+      'ko': '비밀번호를 입력하세요.',
+    },
+    'juh70sqi': {
+      'en': 'Password',
+      'ko': '비밀번호',
+    },
+    '7ylxxpp3': {
+      'en': 'Register',
+      'ko': '회원 가입',
+    },
+    'dwkzl2u5': {
+      'en': 'Input email address',
+      'ko': '메일 주소를 입력하세요.',
+    },
+    'tl5b7rm3': {
+      'en': 'Email',
+      'ko': '이메일',
+    },
+    'wi50v8lb': {
+      'en': 'Input password',
+      'ko': '비밀번호를 입력하세요.',
+    },
+    'actxjkb3': {
+      'en': 'Password',
+      'ko': '비밀번호',
+    },
+    'sfgm06rq': {
+      'en': 'Login',
+      'ko': '로그인',
+    },
+    'm0d3wdqy': {
+      'en': 'Home',
+      'ko': '',
+    },
+  },
+  // Main
+  {
+    'u4s3i1gm': {
+      'en': 'Logged in? ',
+      'ko': '',
+    },
+    'h47rmugw': {
+      'en': 'Register',
+      'ko': '',
+    },
+    '89czqcbo': {
+      'en': 'Logout',
+      'ko': '로그아웃',
+    },
+  },
   // Miscellaneous
   {
     'icc990f6': {
