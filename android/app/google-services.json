@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "523633440722",
+    "project_id": "philov-withcenter",
+    "storage_bucket": "philov-withcenter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:523633440722:android:407563e3a4289d869f3a0b",
+        "android_client_info": {
+          "package_name": "com.withcenter.philov"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "523633440722-hbcf57kbvl8j93jjl18k8af00gbakjld.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.withcenter.philov",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "523633440722-1ge5ecmmkmgv0u1ec6agnfedtts7alre.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEgk2kDgVhG7O3PoBqkfJ_C2d0dX78ijA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "523633440722-1ge5ecmmkmgv0u1ec6agnfedtts7alre.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "523633440722-ffmd5kuoda26ehph2h7hvgtq0mbcm73h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.withcenter.philov"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

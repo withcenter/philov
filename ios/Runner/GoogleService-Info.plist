@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>523633440722-ffmd5kuoda26ehph2h7hvgtq0mbcm73h.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.523633440722-ffmd5kuoda26ehph2h7hvgtq0mbcm73h</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>523633440722-hbcf57kbvl8j93jjl18k8af00gbakjld.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC7jyOY4T0i-dOp7CUJ3uRRej1XTV7i1co</string>
+	<key>GCM_SENDER_ID</key>
+	<string>523633440722</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.withcenter.philov</string>
+	<key>PROJECT_ID</key>
+	<string>philov-withcenter</string>
+	<key>STORAGE_BUCKET</key>
+	<string>philov-withcenter.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:523633440722:ios:c95f2da6bb1654199f3a0b</string>
+</dict>
+</plist>
