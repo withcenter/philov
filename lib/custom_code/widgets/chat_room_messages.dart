@@ -1,4 +1,5 @@
 // Automatic FlutterFlow imports
+
 import '../../backend/backend.dart';
 import '../../flutter_flow/flutter_flow_theme.dart';
 import '../../flutter_flow/flutter_flow_util.dart';
@@ -7,6 +8,7 @@ import '../actions/index.dart'; // Imports custom actions
 import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
+import 'package:fireflow/fireflow.dart';
 
 class ChatRoomMessages extends StatefulWidget {
   const ChatRoomMessages({
@@ -29,6 +31,10 @@ class ChatRoomMessages extends StatefulWidget {
 class _ChatRoomMessagesState extends State<ChatRoomMessages> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return ChatRoomMessageList(
+      onMyMessage: ((p0, p1) => Text('my message')),
+      onOtherMessage: ((p0, p1, p2) => Text('other message')),
+      onEmpty: Text('empty'),
+    );
   }
 }
