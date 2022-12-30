@@ -11,5 +11,5 @@ import 'package:fireflow/fireflow.dart';
 
 Future appService(BuildContext context) async {
   // Add your function code here!
-  AppService.instance.init();
+  AppService.instance.init(context: context);
 }
