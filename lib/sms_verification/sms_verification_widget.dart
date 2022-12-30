@@ -28,7 +28,9 @@ class _SmsVerificationWidgetState extends State<SmsVerificationWidget> {
       if (smsCodeVal == null || smsCodeVal.isEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Enter SMS verification code.'),
+            content: Text(FFLocalizations.of(context).getText(
+              'll98wnua' /* Enter SMS verification code. */,
+            )),
           ),
         );
         return;
@@ -128,7 +130,9 @@ class _SmsVerificationWidgetState extends State<SmsVerificationWidget> {
                     if (smsCodeVal == null || smsCodeVal.isEmpty) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: Text('Enter SMS verification code.'),
+                          content: Text(FFLocalizations.of(context).getText(
+                            'll98wnua' /* Enter SMS verification code. */,
+                          )),
                         ),
                       );
                       return;
