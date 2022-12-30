@@ -94,9 +94,41 @@ class _ProfileWidgetState extends State<ProfileWidget> {
           ),
           actions: [],
           flexibleSpace: FlexibleSpaceBar(
-            background: Image.network(
-              'https://picsum.photos/id/115/600',
-              fit: BoxFit.cover,
+            background: StreamBuilder<List<UsersPublicDataRecord>>(
+              stream: queryUsersPublicDataRecord(
+                queryBuilder: (usersPublicDataRecord) =>
+                    usersPublicDataRecord.where('userDocumentReference',
+                        isEqualTo: currentUserReference),
+                singleRecord: true,
+              ),
+              builder: (context, snapshot) {
+                // Customize what your widget looks like when it's loading.
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: CircularProgressIndicator(
+                        color: FlutterFlowTheme.of(context).primaryColor,
+                      ),
+                    ),
+                  );
+                }
+                List<UsersPublicDataRecord>
+                    coverPhotoGetUserUsersPublicDataRecordList = snapshot.data!;
+                // Return an empty Container when the item does not exist.
+                if (snapshot.data!.isEmpty) {
+                  return Container();
+                }
+                final coverPhotoGetUserUsersPublicDataRecord =
+                    coverPhotoGetUserUsersPublicDataRecordList.isNotEmpty
+                        ? coverPhotoGetUserUsersPublicDataRecordList.first
+                        : null;
+                return Image.network(
+                  'https://picsum.photos/id/115/600',
+                  fit: BoxFit.cover,
+                );
+              },
             ),
           ),
           bottom: PreferredSize(
@@ -305,6 +337,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                 return;
                               }
                             }
+
+                            await actions.afterCoverPhotoUpload(
+                              uploadedFileUrl2,
+                            );
                           },
                         ),
                       ),
