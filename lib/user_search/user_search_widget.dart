@@ -138,9 +138,19 @@ class _UserSearchWidgetState extends State<UserSearchWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        listViewUsersPublicDataRecord.uid!,
-                        style: FlutterFlowTheme.of(context).bodyText1,
+                      Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            listViewUsersPublicDataRecord.uid!,
+                            style: FlutterFlowTheme.of(context).subtitle2,
+                          ),
+                          Text(
+                            listViewUsersPublicDataRecord.displayName!,
+                            style: FlutterFlowTheme.of(context).bodyText1,
+                          ),
+                        ],
                       ),
                       FFButtonWidget(
                         onPressed: () {
