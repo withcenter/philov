@@ -125,7 +125,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                         ? coverPhotoGetUserUsersPublicDataRecordList.first
                         : null;
                 return Image.network(
-                  'https://picsum.photos/id/115/600',
+                  valueOrDefault<String>(
+                    coverPhotoGetUserUsersPublicDataRecord!.coverPhotoUrl,
+                    'https://picsum.photos/id/115/600',
+                  ),
                   fit: BoxFit.cover,
                 );
               },
