@@ -153,8 +153,20 @@ class _UserSearchWidgetState extends State<UserSearchWidget> {
                         ],
                       ),
                       FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          context.pushNamed(
+                            'ChatRoom',
+                            queryParams: {
+                              'otherUserPublicDataDocument': serializeParam(
+                                listViewUsersPublicDataRecord,
+                                ParamType.Document,
+                              ),
+                            }.withoutNulls,
+                            extra: <String, dynamic>{
+                              'otherUserPublicDataDocument':
+                                  listViewUsersPublicDataRecord,
+                            },
+                          );
                         },
                         text: FFLocalizations.of(context).getText(
                           '0b6z289j' /* Chat */,
