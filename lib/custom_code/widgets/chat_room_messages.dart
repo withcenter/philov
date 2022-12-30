@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'package:fireflow/fireflow.dart';
+
 class ChatRoomMessages extends StatefulWidget {
   const ChatRoomMessages({
     Key? key,
@@ -29,6 +31,10 @@ class ChatRoomMessages extends StatefulWidget {
 class _ChatRoomMessagesState extends State<ChatRoomMessages> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return ChatRoomMessageList(
+      onMyMessage: ((data, dataRef) => Text('my message')),
+      onOtherMessage: ((roomRef, data, dataRef) => Text('other message')),
+      onEmpty: Text('empty'),
+    );
   }
 }

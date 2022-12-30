@@ -42,7 +42,7 @@ class _UserSearchWidgetState extends State<UserSearchWidget> {
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
         title: Text(
           FFLocalizations.of(context).getText(
             'q0b19o3s' /* User Search */,
