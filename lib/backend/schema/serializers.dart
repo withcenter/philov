@@ -4,6 +4,8 @@ import 'package:from_css_color/from_css_color.dart';
 import 'users_record.dart';
 import 'users_public_data_record.dart';
 import 'posts_record.dart';
+import 'chat_rooms_record.dart';
+import 'chat_room_messages_record.dart';
 
 import 'index.dart';
 
@@ -17,6 +19,8 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   UsersRecord,
   UsersPublicDataRecord,
   PostsRecord,
+  ChatRoomsRecord,
+  ChatRoomMessagesRecord,
   RecentPostsStruct,
 ])
 final Serializers serializers = (_$serializers.toBuilder()

@@ -98,6 +98,28 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'SmsVerification',
               path: 'smsVerification',
               builder: (context, params) => SmsVerificationWidget(),
+            ),
+            FFRoute(
+              name: 'UserSearch',
+              path: 'userSearch',
+              builder: (context, params) => UserSearchWidget(),
+            ),
+            FFRoute(
+              name: 'ChatRoom',
+              path: 'chatRoom',
+              builder: (context, params) => ChatRoomWidget(),
+            ),
+            FFRoute(
+              name: 'Profile',
+              path: 'profile',
+              asyncParams: {
+                'userPublicDataDocument': getDoc(
+                    ['users_public_data'], UsersPublicDataRecord.serializer),
+              },
+              builder: (context, params) => ProfileWidget(
+                userPublicDataDocument: params.getParam(
+                    'userPublicDataDocument', ParamType.Document),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

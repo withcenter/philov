@@ -168,6 +168,39 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '',
     },
   },
+  // UserSearch
+  {
+    'q0b19o3s': {
+      'en': 'User Search',
+      'ko': '사용자 검색',
+    },
+    '0b6z289j': {
+      'en': 'Chat',
+      'ko': '채팅',
+    },
+    'nvo7t3k7': {
+      'en': 'Home',
+      'ko': '',
+    },
+  },
+  // ChatRoom
+  {
+    'uvtjjrw3': {
+      'en': 'Page Title',
+      'ko': '',
+    },
+    'ldv7gfjc': {
+      'en': 'Home',
+      'ko': '',
+    },
+  },
+  // Profile
+  {
+    'k527nnv0': {
+      'en': 'Home',
+      'ko': '',
+    },
+  },
   // Main
   {
     'u4s3i1gm': {
@@ -181,6 +214,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '89czqcbo': {
       'en': 'Logout',
       'ko': '로그아웃',
+    },
+    'l0ejydpc': {
+      'en': 'User List',
+      'ko': '사용자 목록',
     },
   },
   // Miscellaneous

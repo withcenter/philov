@@ -8,6 +8,8 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'schema/users_record.dart';
 import 'schema/users_public_data_record.dart';
 import 'schema/posts_record.dart';
+import 'schema/chat_rooms_record.dart';
+import 'schema/chat_room_messages_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -18,6 +20,8 @@ export 'schema/serializers.dart';
 export 'schema/users_record.dart';
 export 'schema/users_public_data_record.dart';
 export 'schema/posts_record.dart';
+export 'schema/chat_rooms_record.dart';
+export 'schema/chat_room_messages_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Stream<List<UsersRecord>> queryUsersRecord({
@@ -144,6 +148,91 @@ Future<FFFirestorePage<PostsRecord>> queryPostsRecordPage({
       pageSize: pageSize,
       isStream: isStream,
     );
+
+/// Functions to query ChatRoomsRecords (as a Stream and as a Future).
+Stream<List<ChatRoomsRecord>> queryChatRoomsRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ChatRoomsRecord.collection,
+      ChatRoomsRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ChatRoomsRecord>> queryChatRoomsRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ChatRoomsRecord.collection,
+      ChatRoomsRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<ChatRoomsRecord>> queryChatRoomsRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+    queryCollectionPage(
+      ChatRoomsRecord.collection,
+      ChatRoomsRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query ChatRoomMessagesRecords (as a Stream and as a Future).
+Stream<List<ChatRoomMessagesRecord>> queryChatRoomMessagesRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ChatRoomMessagesRecord.collection,
+      ChatRoomMessagesRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ChatRoomMessagesRecord>> queryChatRoomMessagesRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ChatRoomMessagesRecord.collection,
+      ChatRoomMessagesRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<ChatRoomMessagesRecord>>
+    queryChatRoomMessagesRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+        queryCollectionPage(
+          ChatRoomMessagesRecord.collection,
+          ChatRoomMessagesRecord.serializer,
+          queryBuilder: queryBuilder,
+          nextPageMarker: nextPageMarker,
+          pageSize: pageSize,
+          isStream: isStream,
+        );
 
 Stream<List<T>> queryCollection<T>(Query collection, Serializer<T> serializer,
     {Query Function(Query)? queryBuilder,
