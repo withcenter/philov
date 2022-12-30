@@ -186,8 +186,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // Miscellaneous
   {
     'icc990f6': {
-      'en': '',
-      'ko': '',
+      'en': 'Error: [error]',
+      'ko': '에러: [error]',
     },
     '6wt343lf': {
       'en': '',
@@ -206,8 +206,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '',
     },
     'll98wnua': {
-      'en': '',
-      'ko': '',
+      'en': 'Enter SMS verification code.',
+      'ko': '인증 번호를 입력하세요.',
     },
     'i960fcaz': {
       'en': '',

@@ -22,7 +22,9 @@ class _EntryWidgetState extends State<EntryWidget> {
     super.initState();
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await actions.appService();
+      await actions.appService(
+        context,
+      );
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
