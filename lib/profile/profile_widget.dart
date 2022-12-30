@@ -1,11 +1,14 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../backend/firebase_storage/storage.dart';
+import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
 import '../custom_code/actions/index.dart' as actions;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -25,19 +28,20 @@ class _ProfileWidgetState extends State<ProfileWidget> {
 
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  TextEditingController? textController;
+  String? genderValue;
+  TextEditingController? displayNameController;
 
   @override
   void initState() {
     super.initState();
-    textController = TextEditingController();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
     _unfocusNode.dispose();
-    textController?.dispose();
+    displayNameController?.dispose();
     super.dispose();
   }
 
@@ -362,78 +366,215 @@ class _ProfileWidgetState extends State<ProfileWidget> {
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(24, 36, 24, 0),
-            child: ListView(
-              padding: EdgeInsets.zero,
-              scrollDirection: Axis.vertical,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                  child: Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
+            child: FutureBuilder<List<UsersPublicDataRecord>>(
+              future: queryUsersPublicDataRecordOnce(
+                queryBuilder: (usersPublicDataRecord) =>
+                    usersPublicDataRecord.where('userDocumentReference',
+                        isEqualTo: currentUserReference),
+                singleRecord: true,
+              ),
+              builder: (context, snapshot) {
+                // Customize what your widget looks like when it's loading.
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: CircularProgressIndicator(
+                        color: FlutterFlowTheme.of(context).primaryColor,
+                      ),
                     ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-                          child: SelectionArea(
+                  );
+                }
+                List<UsersPublicDataRecord>
+                    listViewGetUserUsersPublicDataRecordList = snapshot.data!;
+                // Return an empty Container when the item does not exist.
+                if (snapshot.data!.isEmpty) {
+                  return Container();
+                }
+                final listViewGetUserUsersPublicDataRecord =
+                    listViewGetUserUsersPublicDataRecordList.isNotEmpty
+                        ? listViewGetUserUsersPublicDataRecordList.first
+                        : null;
+                return ListView(
+                  padding: EdgeInsets.zero,
+                  scrollDirection: Axis.vertical,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                              child: SelectionArea(
+                                  child: Text(
+                                FFLocalizations.of(context).getText(
+                                  'a812b9l5' /* Input name. */,
+                                ),
+                                style: FlutterFlowTheme.of(context).subtitle2,
+                              )),
+                            ),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                              child: TextFormField(
+                                controller: displayNameController ??=
+                                    TextEditingController(
+                                  text: listViewGetUserUsersPublicDataRecord!
+                                      .displayName,
+                                ),
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelText:
+                                      FFLocalizations.of(context).getText(
+                                    'j6hvf1gz' /* Name */,
+                                  ),
+                                  hintStyle:
+                                      FlutterFlowTheme.of(context).bodyText2,
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0xFFE2E2E3),
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0xFFE2E2E3),
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                ),
+                                style: FlutterFlowTheme.of(context).bodyText1,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(8, 0, 0, 0),
                               child: Text(
-                            FFLocalizations.of(context).getText(
-                              'a812b9l5' /* Input name */,
-                            ),
-                            style: FlutterFlowTheme.of(context).subtitle2,
-                          )),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
-                          child: TextFormField(
-                            controller: textController,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              labelText: FFLocalizations.of(context).getText(
-                                'j6hvf1gz' /* Name */,
-                              ),
-                              hintStyle: FlutterFlowTheme.of(context).bodyText2,
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0xFFE2E2E3),
-                                  width: 1,
+                                FFLocalizations.of(context).getText(
+                                  '52buidnl' /* Select gender. */,
                                 ),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0xFFE2E2E3),
-                                  width: 1,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0x00000000),
-                                  width: 1,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0x00000000),
-                                  width: 1,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
+                                style: FlutterFlowTheme.of(context).subtitle2,
                               ),
                             ),
-                            style: FlutterFlowTheme.of(context).bodyText1,
-                          ),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
+                              child: FlutterFlowDropDown<String>(
+                                initialOption: genderValue ??=
+                                    listViewGetUserUsersPublicDataRecord!
+                                        .gender,
+                                options: ['M', 'F'],
+                                optionLabels: [
+                                  FFLocalizations.of(context).getText(
+                                    '8wle9o9h' /* Male */,
+                                  ),
+                                  FFLocalizations.of(context).getText(
+                                    '5j3tk4id' /* Female */,
+                                  )
+                                ],
+                                onChanged: (val) =>
+                                    setState(() => genderValue = val),
+                                width: double.infinity,
+                                height: 50,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.black,
+                                    ),
+                                hintText: FFLocalizations.of(context).getText(
+                                  'i0t6x9mz' /* gender */,
+                                ),
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                elevation: 2,
+                                borderColor: Color(0x4C57636C),
+                                borderWidth: 1,
+                                borderRadius: 8,
+                                margin: EdgeInsetsDirectional.fromSTEB(
+                                    12, 4, 12, 4),
+                                hidesUnderline: true,
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
-                  ),
-                ),
-              ],
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 32, 0, 0),
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          final usersPublicDataUpdateData =
+                              createUsersPublicDataRecordData(
+                            displayName: displayNameController?.text ?? '',
+                            gender: genderValue,
+                          );
+                          await listViewGetUserUsersPublicDataRecord!.reference
+                              .update(usersPublicDataUpdateData);
+                        },
+                        text: FFLocalizations.of(context).getText(
+                          '3qylmpep' /* Update profile */,
+                        ),
+                        options: FFButtonOptions(
+                          width: 130,
+                          height: 40,
+                          color: FlutterFlowTheme.of(context).primaryColor,
+                          textStyle:
+                              FlutterFlowTheme.of(context).subtitle2.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
           ),
         ),
