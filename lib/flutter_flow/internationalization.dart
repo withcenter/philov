@@ -192,6 +192,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Profile
   {
+    'a812b9l5': {
+      'en': 'Input name',
+      'ko': '이름을 입력하세요.',
+    },
+    'j6hvf1gz': {
+      'en': 'Name',
+      'ko': '이름',
+    },
     'k527nnv0': {
       'en': 'Home',
       'ko': '',

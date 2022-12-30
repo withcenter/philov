@@ -17,22 +17,27 @@ class ProfileWidget extends StatefulWidget {
 }
 
 class _ProfileWidgetState extends State<ProfileWidget> {
-  bool isMediaUploading = false;
-  String uploadedFileUrl = '';
+  bool isMediaUploading1 = false;
+  String uploadedFileUrl1 = '';
+
+  bool isMediaUploading2 = false;
+  String uploadedFileUrl2 = '';
 
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  TextEditingController? textController;
 
   @override
   void initState() {
     super.initState();
-
+    textController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
     _unfocusNode.dispose();
+    textController?.dispose();
     super.dispose();
   }
 
@@ -185,7 +190,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             if (selectedMedia != null &&
                                 selectedMedia.every((m) => validateFileFormat(
                                     m.storagePath, context))) {
-                              setState(() => isMediaUploading = true);
+                              setState(() => isMediaUploading1 = true);
                               var downloadUrls = <String>[];
                               try {
                                 showUploadMessage(
@@ -205,11 +210,11 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                               } finally {
                                 ScaffoldMessenger.of(context)
                                     .hideCurrentSnackBar();
-                                isMediaUploading = false;
+                                isMediaUploading1 = false;
                               }
                               if (downloadUrls.length == selectedMedia.length) {
-                                setState(
-                                    () => uploadedFileUrl = downloadUrls.first);
+                                setState(() =>
+                                    uploadedFileUrl1 = downloadUrls.first);
                                 showUploadMessage(context, 'Success!');
                               } else {
                                 setState(() {});
@@ -220,7 +225,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             }
 
                             await actions.afterProfilePhotoUpload(
-                              uploadedFileUrl,
+                              uploadedFileUrl1,
                             );
                           },
                           child: Container(
@@ -266,8 +271,40 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             color: Colors.white,
                             size: 30,
                           ),
-                          onPressed: () {
-                            print('IconButton pressed ...');
+                          onPressed: () async {
+                            final selectedMedia =
+                                await selectMediaWithSourceBottomSheet(
+                              context: context,
+                              maxWidth: 700.00,
+                              maxHeight: 1200.00,
+                              allowPhoto: true,
+                            );
+                            if (selectedMedia != null &&
+                                selectedMedia.every((m) => validateFileFormat(
+                                    m.storagePath, context))) {
+                              setState(() => isMediaUploading2 = true);
+                              var downloadUrls = <String>[];
+                              try {
+                                downloadUrls = (await Future.wait(
+                                  selectedMedia.map(
+                                    (m) async => await uploadData(
+                                        m.storagePath, m.bytes),
+                                  ),
+                                ))
+                                    .where((u) => u != null)
+                                    .map((u) => u!)
+                                    .toList();
+                              } finally {
+                                isMediaUploading2 = false;
+                              }
+                              if (downloadUrls.length == selectedMedia.length) {
+                                setState(() =>
+                                    uploadedFileUrl2 = downloadUrls.first);
+                              } else {
+                                setState(() {});
+                                return;
+                              }
+                            }
                           },
                         ),
                       ),
@@ -279,6 +316,87 @@ class _ProfileWidgetState extends State<ProfileWidget> {
           ),
           centerTitle: false,
           elevation: 0,
+        ),
+      ),
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(24, 36, 24, 0),
+            child: ListView(
+              padding: EdgeInsets.zero,
+              scrollDirection: Axis.vertical,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                  child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: Colors.transparent,
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                          child: SelectionArea(
+                              child: Text(
+                            FFLocalizations.of(context).getText(
+                              'a812b9l5' /* Input name */,
+                            ),
+                            style: FlutterFlowTheme.of(context).subtitle2,
+                          )),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                          child: TextFormField(
+                            controller: textController,
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              labelText: FFLocalizations.of(context).getText(
+                                'j6hvf1gz' /* Name */,
+                              ),
+                              hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0xFFE2E2E3),
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0xFFE2E2E3),
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                            style: FlutterFlowTheme.of(context).bodyText1,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
