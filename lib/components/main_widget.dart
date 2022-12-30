@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../auth/firebase_user_provider.dart';
+import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -41,10 +42,52 @@ class _MainWidgetState extends State<MainWidget> {
             ),
           ],
         ),
-        Text(
-          currentUserUid,
-          style: FlutterFlowTheme.of(context).bodyText1,
-        ),
+        if (loggedIn)
+          StreamBuilder<List<UsersPublicDataRecord>>(
+            stream: queryUsersPublicDataRecord(
+              queryBuilder: (usersPublicDataRecord) =>
+                  usersPublicDataRecord.where('userDocumentReference',
+                      isEqualTo: currentUserReference),
+              singleRecord: true,
+            ),
+            builder: (context, snapshot) {
+              // Customize what your widget looks like when it's loading.
+              if (!snapshot.hasData) {
+                return Center(
+                  child: SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: CircularProgressIndicator(
+                      color: FlutterFlowTheme.of(context).primaryColor,
+                    ),
+                  ),
+                );
+              }
+              List<UsersPublicDataRecord> columnUsersPublicDataRecordList =
+                  snapshot.data!;
+              // Return an empty Container when the item does not exist.
+              if (snapshot.data!.isEmpty) {
+                return Container();
+              }
+              final columnUsersPublicDataRecord =
+                  columnUsersPublicDataRecordList.isNotEmpty
+                      ? columnUsersPublicDataRecordList.first
+                      : null;
+              return Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Text(
+                    columnUsersPublicDataRecord!.displayName!,
+                    style: FlutterFlowTheme.of(context).bodyText1,
+                  ),
+                  Text(
+                    currentUserUid,
+                    style: FlutterFlowTheme.of(context).bodyText1,
+                  ),
+                ],
+              );
+            },
+          ),
         FFButtonWidget(
           onPressed: () async {
             context.pushNamed('Login');

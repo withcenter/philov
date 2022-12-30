@@ -185,6 +185,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ChatRoom
   {
+    'i22zh3xb': {
+      'en': 'Input message',
+      'ko': '메세지를 입력하세요.',
+    },
     'ekk0em2s': {
       'en': 'Home',
       'ko': '',
