@@ -193,12 +193,32 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // Profile
   {
     'a812b9l5': {
-      'en': 'Input name',
+      'en': 'Input name.',
       'ko': '이름을 입력하세요.',
     },
     'j6hvf1gz': {
       'en': 'Name',
       'ko': '이름',
+    },
+    '52buidnl': {
+      'en': 'Select gender.',
+      'ko': '성별을 선택하세요.',
+    },
+    '8wle9o9h': {
+      'en': 'Male',
+      'ko': '남자',
+    },
+    '5j3tk4id': {
+      'en': 'Female',
+      'ko': '여자',
+    },
+    'i0t6x9mz': {
+      'en': 'gender',
+      'ko': '성별',
+    },
+    '3qylmpep': {
+      'en': 'Update profile',
+      'ko': '회원 정보 수정',
     },
     'k527nnv0': {
       'en': 'Home',
