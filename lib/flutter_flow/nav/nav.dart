@@ -93,6 +93,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Login',
               path: 'login',
               builder: (context, params) => LoginWidget(),
+            ),
+            FFRoute(
+              name: 'SmsVerification',
+              path: 'smsVerification',
+              builder: (context, params) => SmsVerificationWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

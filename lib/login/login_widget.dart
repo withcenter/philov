@@ -19,6 +19,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   TextEditingController? emailRegisterController;
   TextEditingController? passwordRegisterController;
   late bool passwordRegisterVisibility;
+  TextEditingController? phoneNumberController;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -31,6 +32,8 @@ class _LoginWidgetState extends State<LoginWidget> {
     emailRegisterController = TextEditingController();
     passwordRegisterController = TextEditingController();
     passwordRegisterVisibility = false;
+    phoneNumberController = TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -40,6 +43,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     passwordLoginController?.dispose();
     emailRegisterController?.dispose();
     passwordRegisterController?.dispose();
+    phoneNumberController?.dispose();
     super.dispose();
   }
 
@@ -456,6 +460,134 @@ class _LoginWidgetState extends State<LoginWidget> {
                         ),
                         options: FFButtonOptions(
                           width: 130,
+                          height: 40,
+                          color: FlutterFlowTheme.of(context).primaryColor,
+                          textStyle:
+                              FlutterFlowTheme.of(context).subtitle2.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(24, 24, 24, 24),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                              child: SelectionArea(
+                                  child: Text(
+                                FFLocalizations.of(context).getText(
+                                  'rehegqhf' /* Phone Number
+Ex) +82 10 1234 5... */
+                                  ,
+                                ),
+                                style: FlutterFlowTheme.of(context).subtitle2,
+                              )),
+                            ),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                              child: TextFormField(
+                                controller: phoneNumberController,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelText:
+                                      FFLocalizations.of(context).getText(
+                                    'i5kmdfzw' /* Phone Number */,
+                                  ),
+                                  hintStyle:
+                                      FlutterFlowTheme.of(context).bodyText2,
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0xFFE2E2E3),
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0xFFE2E2E3),
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                ),
+                                style: FlutterFlowTheme.of(context).bodyText1,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          final phoneNumberVal = phoneNumberController!.text;
+                          if (phoneNumberVal == null ||
+                              phoneNumberVal.isEmpty ||
+                              !phoneNumberVal.startsWith('+')) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                    'Phone Number is required and has to start with +.'),
+                              ),
+                            );
+                            return;
+                          }
+                          await beginPhoneAuth(
+                            context: context,
+                            phoneNumber: phoneNumberVal,
+                            onCodeSent: () async {
+                              context.goNamedAuth(
+                                'SmsVerification',
+                                mounted,
+                                ignoreRedirect: true,
+                              );
+                            },
+                          );
+                        },
+                        text: FFLocalizations.of(context).getText(
+                          'jhn6lc0p' /* Verify Phone Number */,
+                        ),
+                        options: FFButtonOptions(
                           height: 40,
                           color: FlutterFlowTheme.of(context).primaryColor,
                           textStyle:

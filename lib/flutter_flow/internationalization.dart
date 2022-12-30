@@ -136,7 +136,34 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Login',
       'ko': '로그인',
     },
+    'rehegqhf': {
+      'en': 'Phone Number\nEx) +82 10 1234 5678',
+      'ko': '전화번호\n예) +82 10 1234 5678',
+    },
+    'i5kmdfzw': {
+      'en': 'Phone Number',
+      'ko': '전화번호',
+    },
+    'jhn6lc0p': {
+      'en': 'Verify Phone Number',
+      'ko': '전화번호 인증',
+    },
     'm0d3wdqy': {
+      'en': 'Home',
+      'ko': '',
+    },
+  },
+  // SmsVerification
+  {
+    'kw8rchyl': {
+      'en': 'SMS Verification',
+      'ko': '문자 인증',
+    },
+    '4gszsorg': {
+      'en': 'Input SMS code.',
+      'ko': '인증 코드를 입력하세요.',
+    },
+    'sng7k0kr': {
       'en': 'Home',
       'ko': '',
     },
