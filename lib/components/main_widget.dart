@@ -41,6 +41,10 @@ class _MainWidgetState extends State<MainWidget> {
             ),
           ],
         ),
+        Text(
+          currentUserUid,
+          style: FlutterFlowTheme.of(context).bodyText1,
+        ),
         FFButtonWidget(
           onPressed: () async {
             context.pushNamed('Login');
