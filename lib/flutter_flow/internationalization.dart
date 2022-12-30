@@ -215,6 +215,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'User List',
       'ko': '사용자 목록',
     },
+    '1neh66ue': {
+      'en': 'Profile',
+      'ko': '프로필',
+    },
   },
   // Miscellaneous
   {

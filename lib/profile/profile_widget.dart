@@ -5,6 +5,7 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/upload_media.dart';
+import '../custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -140,60 +141,62 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   ),
                   Align(
                     alignment: AlignmentDirectional(0, 0),
-                    child: Container(
-                      width: 140,
-                      height: 140,
-                      child: Stack(
-                        children: [
-                          InkWell(
-                            onTap: () async {
-                              final selectedMedia =
-                                  await selectMediaWithSourceBottomSheet(
-                                context: context,
-                                maxWidth: 360.00,
-                                maxHeight: 360.00,
-                                imageQuality: 100,
-                                allowPhoto: true,
-                              );
-                              if (selectedMedia != null &&
-                                  selectedMedia.every((m) => validateFileFormat(
-                                      m.storagePath, context))) {
-                                setState(() => isMediaUploading = true);
-                                var downloadUrls = <String>[];
-                                try {
-                                  showUploadMessage(
-                                    context,
-                                    'Uploading file...',
-                                    showLoading: true,
-                                  );
-                                  downloadUrls = (await Future.wait(
-                                    selectedMedia.map(
-                                      (m) async => await uploadData(
-                                          m.storagePath, m.bytes),
-                                    ),
-                                  ))
-                                      .where((u) => u != null)
-                                      .map((u) => u!)
-                                      .toList();
-                                } finally {
-                                  ScaffoldMessenger.of(context)
-                                      .hideCurrentSnackBar();
-                                  isMediaUploading = false;
-                                }
-                                if (downloadUrls.length ==
-                                    selectedMedia.length) {
-                                  setState(() =>
-                                      uploadedFileUrl = downloadUrls.first);
-                                  showUploadMessage(context, 'Success!');
-                                } else {
-                                  setState(() {});
-                                  showUploadMessage(
-                                      context, 'Failed to upload media');
-                                  return;
-                                }
-                              }
-                            },
-                            child: ClipRRect(
+                    child: InkWell(
+                      onTap: () async {
+                        final selectedMedia =
+                            await selectMediaWithSourceBottomSheet(
+                          context: context,
+                          maxWidth: 360.00,
+                          maxHeight: 360.00,
+                          imageQuality: 100,
+                          allowPhoto: true,
+                        );
+                        if (selectedMedia != null &&
+                            selectedMedia.every((m) =>
+                                validateFileFormat(m.storagePath, context))) {
+                          setState(() => isMediaUploading = true);
+                          var downloadUrls = <String>[];
+                          try {
+                            showUploadMessage(
+                              context,
+                              'Uploading file...',
+                              showLoading: true,
+                            );
+                            downloadUrls = (await Future.wait(
+                              selectedMedia.map(
+                                (m) async =>
+                                    await uploadData(m.storagePath, m.bytes),
+                              ),
+                            ))
+                                .where((u) => u != null)
+                                .map((u) => u!)
+                                .toList();
+                          } finally {
+                            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                            isMediaUploading = false;
+                          }
+                          if (downloadUrls.length == selectedMedia.length) {
+                            setState(
+                                () => uploadedFileUrl = downloadUrls.first);
+                            showUploadMessage(context, 'Success!');
+                          } else {
+                            setState(() {});
+                            showUploadMessage(
+                                context, 'Failed to upload media');
+                            return;
+                          }
+                        }
+
+                        await actions.afterProfilePhotoUpload(
+                          uploadedFileUrl,
+                        );
+                      },
+                      child: Container(
+                        width: 140,
+                        height: 140,
+                        child: Stack(
+                          children: [
+                            ClipRRect(
                               borderRadius: BorderRadius.circular(70),
                               child: Image.network(
                                 'https://picsum.photos/seed/997/600',
@@ -202,16 +205,16 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                 fit: BoxFit.cover,
                               ),
                             ),
-                          ),
-                          Align(
-                            alignment: AlignmentDirectional(1, 1),
-                            child: Icon(
-                              Icons.photo_camera,
-                              color: Colors.black,
-                              size: 32,
+                            Align(
+                              alignment: AlignmentDirectional(1, 1),
+                              child: Icon(
+                                Icons.photo_camera,
+                                color: Colors.black,
+                                size: 32,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
