@@ -185,11 +185,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ChatRoom
   {
-    'uvtjjrw3': {
-      'en': 'Page Title',
-      'ko': '',
-    },
-    'ldv7gfjc': {
+    'ekk0em2s': {
       'en': 'Home',
       'ko': '',
     },
