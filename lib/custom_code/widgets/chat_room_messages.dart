@@ -32,8 +32,8 @@ class _ChatRoomMessagesState extends State<ChatRoomMessages> {
   @override
   Widget build(BuildContext context) {
     return ChatRoomMessageList(
-      onMyMessage: ((p0, p1) => Text('my message')),
-      onOtherMessage: ((p0, p1, p2) => Text('other message')),
+      onMyMessage: ((data, dataRef) => Text('my message')),
+      onOtherMessage: ((roomRef, data, dataRef) => Text('other message')),
       onEmpty: Text('empty'),
     );
   }
