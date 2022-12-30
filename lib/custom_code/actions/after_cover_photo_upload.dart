@@ -1,6 +1,4 @@
 // Automatic FlutterFlow imports
-import 'package:fireflow/fireflow.dart';
-
 import '../../backend/backend.dart';
 import '../../flutter_flow/flutter_flow_theme.dart';
 import '../../flutter_flow/flutter_flow_util.dart';
@@ -11,7 +9,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fireflow/fireflow.dart';
 
-Future afterProfilePhotoUpload(String? imagePath) async {
+Future afterCoverPhotoUpload(String? imagePath) async {
   // Add your function code here!
-  return UserService.instance.afterProfilePhotoUpload(imagePath);
+  return UserService.instance.afterCoverPhotoUpload(imagePath);
 }
