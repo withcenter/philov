@@ -32,7 +32,12 @@ Future<User?> signInOrCreateAccount(
   } on FirebaseAuthException catch (e) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Error: ${e.message!}')),
+      SnackBar(
+          content: Text(FFLocalizations.of(context)
+              .getText(
+                'icc990f6' /* Error: [error] */,
+              )
+              .replaceAll('[error]', e.message!))),
     );
     return null;
   }
@@ -68,7 +73,12 @@ Future resetPassword(
   } on FirebaseAuthException catch (e) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Error: ${e.message!}')),
+      SnackBar(
+          content: Text(FFLocalizations.of(context)
+              .getText(
+                'icc990f6' /* Error: [error] */,
+              )
+              .replaceAll('[error]', e.message!))),
     );
     return null;
   }
@@ -153,7 +163,11 @@ Future beginPhoneAuth({
     verificationFailed: (e) {
       completer.complete(false);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text('Error: ${e.message!}'),
+        content: Text(FFLocalizations.of(context)
+            .getText(
+              'icc990f6' /* Error: [error] */,
+            )
+            .replaceAll('[error]', e.message!)),
       ));
     },
     codeSent: (verificationId, _) {
@@ -206,13 +220,14 @@ final authenticatedUserStream = FirebaseAuth.instance
     .asBroadcastStream();
 
 class AuthUserStreamWidget extends StatelessWidget {
-  const AuthUserStreamWidget({Key? key, required this.child}) : super(key: key);
+  const AuthUserStreamWidget({Key? key, required this.builder})
+      : super(key: key);
 
-  final Widget child;
+  final WidgetBuilder builder;
 
   @override
   Widget build(BuildContext context) => StreamBuilder(
         stream: authenticatedUserStream,
-        builder: (context, _) => child,
+        builder: (context, _) => builder(context),
       );
 }

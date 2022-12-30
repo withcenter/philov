@@ -136,7 +136,67 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Login',
       'ko': '로그인',
     },
+    'rehegqhf': {
+      'en': 'Phone Number\nEx) +82 10 1234 5678',
+      'ko': '전화번호\n예) +82 10 1234 5678',
+    },
+    'i5kmdfzw': {
+      'en': 'Phone Number',
+      'ko': '전화번호',
+    },
+    'jhn6lc0p': {
+      'en': 'Verify Phone Number',
+      'ko': '전화번호 인증',
+    },
     'm0d3wdqy': {
+      'en': 'Home',
+      'ko': '',
+    },
+  },
+  // SmsVerification
+  {
+    'kw8rchyl': {
+      'en': 'SMS Verification',
+      'ko': '문자 인증',
+    },
+    '4gszsorg': {
+      'en': 'Input SMS code.',
+      'ko': '인증 코드를 입력하세요.',
+    },
+    'sng7k0kr': {
+      'en': 'Home',
+      'ko': '',
+    },
+  },
+  // UserSearch
+  {
+    'q0b19o3s': {
+      'en': 'User Search',
+      'ko': '사용자 검색',
+    },
+    '0b6z289j': {
+      'en': 'Chat',
+      'ko': '채팅',
+    },
+    'nvo7t3k7': {
+      'en': 'Home',
+      'ko': '',
+    },
+  },
+  // ChatRoom
+  {
+    'uvtjjrw3': {
+      'en': 'Page Title',
+      'ko': '',
+    },
+    'ldv7gfjc': {
+      'en': 'Home',
+      'ko': '',
+    },
+  },
+  // Profile
+  {
+    'k527nnv0': {
       'en': 'Home',
       'ko': '',
     },
@@ -145,22 +205,26 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'u4s3i1gm': {
       'en': 'Logged in? ',
-      'ko': '',
+      'ko': '로그인 했나요?',
     },
     'h47rmugw': {
       'en': 'Register',
-      'ko': '',
+      'ko': '회원 가입 / 로그인',
     },
     '89czqcbo': {
       'en': 'Logout',
       'ko': '로그아웃',
     },
+    'l0ejydpc': {
+      'en': 'User List',
+      'ko': '사용자 목록',
+    },
   },
   // Miscellaneous
   {
     'icc990f6': {
-      'en': '',
-      'ko': '',
+      'en': 'Error: [error]',
+      'ko': '에러: [error]',
     },
     '6wt343lf': {
       'en': '',
@@ -179,8 +243,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '',
     },
     'll98wnua': {
-      'en': '',
-      'ko': '',
+      'en': 'Enter SMS verification code.',
+      'ko': '인증 번호를 입력하세요.',
     },
     'i960fcaz': {
       'en': '',

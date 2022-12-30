@@ -1,31 +1,22 @@
-import '../components/main_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class EntryWidget extends StatefulWidget {
-  const EntryWidget({Key? key}) : super(key: key);
+class ChatRoomWidget extends StatefulWidget {
+  const ChatRoomWidget({Key? key}) : super(key: key);
 
   @override
-  _EntryWidgetState createState() => _EntryWidgetState();
+  _ChatRoomWidgetState createState() => _ChatRoomWidgetState();
 }
 
-class _EntryWidgetState extends State<EntryWidget> {
+class _ChatRoomWidgetState extends State<ChatRoomWidget> {
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await actions.appService(
-        context,
-      );
-    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -46,7 +37,7 @@ class _EntryWidgetState extends State<EntryWidget> {
         automaticallyImplyLeading: false,
         title: Text(
           FFLocalizations.of(context).getText(
-            'ydc10k3v' /* PHILOV */,
+            'uvtjjrw3' /* Page Title */,
           ),
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
@@ -61,7 +52,10 @@ class _EntryWidgetState extends State<EntryWidget> {
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-          child: MainWidget(),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [],
+          ),
         ),
       ),
     );

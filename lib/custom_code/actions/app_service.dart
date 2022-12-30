@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fireflow/fireflow.dart';
 
-Future appService() async {
+Future appService(BuildContext context) async {
   // Add your function code here!
-  AppService.instance.init();
+  AppService.instance.init(context: context);
 }

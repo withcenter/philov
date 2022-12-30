@@ -132,8 +132,8 @@ class _$UsersPublicDataRecordSerializer
     if (value != null) {
       result
         ..add('isPremiumUser')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(DateTime)));
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
     }
     value = object.ffRef;
     if (value != null) {
@@ -223,7 +223,7 @@ class _$UsersPublicDataRecordSerializer
           break;
         case 'isPremiumUser':
           result.isPremiumUser = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime?;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
@@ -268,7 +268,7 @@ class _$UsersPublicDataRecord extends UsersPublicDataRecord {
   @override
   final DateTime? lastPostCreatedAt;
   @override
-  final DateTime? isPremiumUser;
+  final bool? isPremiumUser;
   @override
   final DocumentReference<Object?>? ffRef;
 
@@ -460,9 +460,9 @@ class UsersPublicDataRecordBuilder
   set lastPostCreatedAt(DateTime? lastPostCreatedAt) =>
       _$this._lastPostCreatedAt = lastPostCreatedAt;
 
-  DateTime? _isPremiumUser;
-  DateTime? get isPremiumUser => _$this._isPremiumUser;
-  set isPremiumUser(DateTime? isPremiumUser) =>
+  bool? _isPremiumUser;
+  bool? get isPremiumUser => _$this._isPremiumUser;
+  set isPremiumUser(bool? isPremiumUser) =>
       _$this._isPremiumUser = isPremiumUser;
 
   DocumentReference<Object?>? _ffRef;

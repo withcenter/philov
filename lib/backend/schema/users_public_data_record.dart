@@ -39,7 +39,7 @@ abstract class UsersPublicDataRecord
 
   DateTime? get lastPostCreatedAt;
 
-  DateTime? get isPremiumUser;
+  bool? get isPremiumUser;
 
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
@@ -55,7 +55,8 @@ abstract class UsersPublicDataRecord
         ..hasPhoto = false
         ..isProfileComplete = false
         ..coverPhotoUrl = ''
-        ..recentPosts = ListBuilder();
+        ..recentPosts = ListBuilder()
+        ..isPremiumUser = false;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users_public_data');
@@ -92,7 +93,7 @@ Map<String, dynamic> createUsersPublicDataRecordData({
   bool? isProfileComplete,
   String? coverPhotoUrl,
   DateTime? lastPostCreatedAt,
-  DateTime? isPremiumUser,
+  bool? isPremiumUser,
 }) {
   final firestoreData = serializers.toFirestore(
     UsersPublicDataRecord.serializer,

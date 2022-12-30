@@ -15,6 +15,13 @@ class MainWidget extends StatefulWidget {
 
 class _MainWidgetState extends State<MainWidget> {
   @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.max,
@@ -65,6 +72,28 @@ class _MainWidgetState extends State<MainWidget> {
           },
           text: FFLocalizations.of(context).getText(
             '89czqcbo' /* Logout */,
+          ),
+          options: FFButtonOptions(
+            width: 130,
+            height: 40,
+            color: FlutterFlowTheme.of(context).primaryColor,
+            textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                  fontFamily: 'Poppins',
+                  color: Colors.white,
+                ),
+            borderSide: BorderSide(
+              color: Colors.transparent,
+              width: 1,
+            ),
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+        FFButtonWidget(
+          onPressed: () async {
+            context.pushNamed('UserSearch');
+          },
+          text: FFLocalizations.of(context).getText(
+            'l0ejydpc' /* User List */,
           ),
           options: FFButtonOptions(
             width: 130,
