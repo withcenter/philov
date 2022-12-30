@@ -107,7 +107,7 @@ class ThemeTypography extends Typography {
   TextStyle get title2 => GoogleFonts.getFont(
         'Poppins',
         color: theme.secondaryText,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w500,
         fontSize: 22,
       );
   String get title3Family => 'Poppins';

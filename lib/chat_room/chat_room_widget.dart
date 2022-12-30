@@ -1,10 +1,19 @@
+import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ChatRoomWidget extends StatefulWidget {
-  const ChatRoomWidget({Key? key}) : super(key: key);
+  const ChatRoomWidget({
+    Key? key,
+    this.otherUserPublicDataDocument,
+    this.chatRoomDocument,
+  }) : super(key: key);
+
+  final UsersPublicDataRecord? otherUserPublicDataDocument;
+  final ChatRoomsRecord? chatRoomDocument;
 
   @override
   _ChatRoomWidgetState createState() => _ChatRoomWidgetState();
@@ -34,10 +43,13 @@ class _ChatRoomWidgetState extends State<ChatRoomWidget> {
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
         title: Text(
-          FFLocalizations.of(context).getText(
-            'uvtjjrw3' /* Page Title */,
+          valueOrDefault<String>(
+            widget.otherUserPublicDataDocument != null
+                ? widget.otherUserPublicDataDocument!.displayName
+                : widget.chatRoomDocument!.title,
+            '...',
           ),
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
@@ -52,9 +64,15 @@ class _ChatRoomWidgetState extends State<ChatRoomWidget> {
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [],
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            child: custom_widgets.ChatRoomMessages(
+              width: double.infinity,
+              height: double.infinity,
+              otherUserPublicDataDocument: widget.otherUserPublicDataDocument,
+              chatRoomDocument: widget.chatRoomDocument,
+            ),
           ),
         ),
       ),

@@ -93,11 +93,13 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'Login': (data) async => LoginWidget(),
   'SmsVerification': (data) async => SmsVerificationWidget(),
   'UserSearch': (data) async => UserSearchWidget(),
-  'ChatRoom': (data) async => ChatRoomWidget(),
-  'Profile': (data) async => ProfileWidget(
-        userPublicDataDocument: await getDocumentParameter(
-            data, 'userPublicDataDocument', UsersPublicDataRecord.serializer),
+  'ChatRoom': (data) async => ChatRoomWidget(
+        otherUserPublicDataDocument: await getDocumentParameter(data,
+            'otherUserPublicDataDocument', UsersPublicDataRecord.serializer),
+        chatRoomDocument: await getDocumentParameter(
+            data, 'chatRoomDocument', ChatRoomsRecord.serializer),
       ),
+  'Profile': (data) async => ProfileWidget(),
 };
 
 bool hasMatchingParameters(Map<String, dynamic> data, Set<String> params) =>
