@@ -107,19 +107,23 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'ChatRoom',
               path: 'chatRoom',
-              builder: (context, params) => ChatRoomWidget(),
+              asyncParams: {
+                'otherUserPublicDataDocument': getDoc(
+                    ['users_public_data'], UsersPublicDataRecord.serializer),
+                'chatRoomDocument':
+                    getDoc(['chat_rooms'], ChatRoomsRecord.serializer),
+              },
+              builder: (context, params) => ChatRoomWidget(
+                otherUserPublicDataDocument: params.getParam(
+                    'otherUserPublicDataDocument', ParamType.Document),
+                chatRoomDocument:
+                    params.getParam('chatRoomDocument', ParamType.Document),
+              ),
             ),
             FFRoute(
               name: 'Profile',
               path: 'profile',
-              asyncParams: {
-                'userPublicDataDocument': getDoc(
-                    ['users_public_data'], UsersPublicDataRecord.serializer),
-              },
-              builder: (context, params) => ProfileWidget(
-                userPublicDataDocument: params.getParam(
-                    'userPublicDataDocument', ParamType.Document),
-              ),
+              builder: (context, params) => ProfileWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

@@ -9,10 +9,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fireflow/fireflow.dart';
 
-Future appService(BuildContext context) async {
+Future afterProfilePhotoUpload(String? imagePath) async {
   // Add your function code here!
-  AppService.instance.init(
-    context: context,
-    debug: true,
-  );
+  return UserService.instance.afterProfilePhotoUpload(imagePath);
 }

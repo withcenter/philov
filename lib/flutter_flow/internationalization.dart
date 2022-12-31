@@ -185,17 +185,45 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ChatRoom
   {
-    'uvtjjrw3': {
-      'en': 'Page Title',
-      'ko': '',
+    'i22zh3xb': {
+      'en': 'Input message',
+      'ko': '메세지를 입력하세요.',
     },
-    'ldv7gfjc': {
+    'ekk0em2s': {
       'en': 'Home',
       'ko': '',
     },
   },
   // Profile
   {
+    'a812b9l5': {
+      'en': 'Input name.',
+      'ko': '이름을 입력하세요.',
+    },
+    'j6hvf1gz': {
+      'en': 'Name',
+      'ko': '이름',
+    },
+    '52buidnl': {
+      'en': 'Select gender.',
+      'ko': '성별을 선택하세요.',
+    },
+    '8wle9o9h': {
+      'en': 'Male',
+      'ko': '남자',
+    },
+    '5j3tk4id': {
+      'en': 'Female',
+      'ko': '여자',
+    },
+    'i0t6x9mz': {
+      'en': 'gender',
+      'ko': '성별',
+    },
+    '3qylmpep': {
+      'en': 'Update profile',
+      'ko': '회원 정보 수정',
+    },
     'k527nnv0': {
       'en': 'Home',
       'ko': '',
@@ -218,6 +246,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'l0ejydpc': {
       'en': 'User List',
       'ko': '사용자 목록',
+    },
+    '1neh66ue': {
+      'en': 'Profile',
+      'ko': '프로필',
     },
   },
   // Miscellaneous
