@@ -181,6 +181,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ChatRoom
   {
+    'bg043vfq': {
+      'en': 'Input chat message',
+      'ko': '메시지를 입력 해 주세요.',
+    },
     'ekk0em2s': {
       'en': 'Home',
       'ko': '',
@@ -246,15 +250,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ChatMessageMenu
   {
-    'xy09ifoz': {
+    'gcz9oa46': {
       'en': 'Chat message menu',
       'ko': '',
     },
-    'zlvv0028': {
+    '8pn55k5e': {
       'en': 'Edit',
       'ko': '',
     },
-    '3sabot6a': {
+    'nl2aqbat': {
       'en': 'Delete',
       'ko': '',
     },
