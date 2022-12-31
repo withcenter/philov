@@ -39,17 +39,17 @@ class _ChatRoomMessagesState extends State<ChatRoomMessages> {
       otherUserPublicDataDocument:
           widget.otherUserPublicDataDocument?.reference,
       chatRoomDocumentReference: widget.chatRoomDocument?.reference,
-      onMyMessage: (data, dataRef) => ChatMyMessageWidget(
+      onMyMessage: (message) => ChatMyMessageWidget(
         chatRoomMessageDocument: ChatRoomMessagesRecord.getDocumentFromData(
-          data,
-          dataRef,
+          message.data,
+          message.ref,
         ),
       ),
-      onOtherMessage: (roomRef, data, dataRef) => ChatOtherUserMessageWidget(
+      onOtherMessage: (message) => ChatOtherUserMessageWidget(
         chatRoomDocument: widget.chatRoomDocument,
         chatRoomMessageDocument: ChatRoomMessagesRecord.getDocumentFromData(
-          data,
-          dataRef,
+          message.data,
+          message.ref,
         ),
       ),
       onEmpty: ChatRoomEmptyWidget(),
