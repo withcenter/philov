@@ -44,7 +44,7 @@ class _ChatMessageMenuWidgetState extends State<ChatMessageMenuWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(16, 8, 0, 0),
               child: Text(
                 FFLocalizations.of(context).getText(
-                  'xojayz1v' /* Chat message menu */,
+                  'xy09ifoz' /* Chat message menu */,
                 ),
                 style: FlutterFlowTheme.of(context).subtitle2,
               ),
@@ -111,7 +111,7 @@ class _ChatMessageMenuWidgetState extends State<ChatMessageMenuWidget> {
                           children: [
                             Text(
                               FFLocalizations.of(context).getText(
-                                '93pps8o0' /* Edit */,
+                                'zlvv0028' /* Edit */,
                               ),
                               style: FlutterFlowTheme.of(context).subtitle2,
                             ),
@@ -157,7 +157,7 @@ class _ChatMessageMenuWidgetState extends State<ChatMessageMenuWidget> {
                           children: [
                             Text(
                               FFLocalizations.of(context).getText(
-                                'ek9t9s2v' /* Delete */,
+                                '3sabot6a' /* Delete */,
                               ),
                               style: FlutterFlowTheme.of(context).subtitle2,
                             ),

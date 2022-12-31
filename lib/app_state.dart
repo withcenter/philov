@@ -30,6 +30,20 @@ class FFAppState extends ChangeNotifier {
   set defaultImagePath(String _value) {
     _defaultImagePath = _value;
   }
+
+  String _anonymousMaleUrl =
+      'https://firebasestorage.googleapis.com/v0/b/withcenter-kmeet.appspot.com/o/assets%2Fimages%2Fmale.jpg?alt=media&token=0ddc4469-6968-481d-a133-3bfc941e9496';
+  String get anonymousMaleUrl => _anonymousMaleUrl;
+  set anonymousMaleUrl(String _value) {
+    _anonymousMaleUrl = _value;
+  }
+
+  String _anonymousFemaleUrl =
+      'https://firebasestorage.googleapis.com/v0/b/withcenter-kmeet.appspot.com/o/assets%2Fimages%2Ffemale.jpg?alt=media&token=892c0854-63de-4e81-a268-b454fe82286e';
+  String get anonymousFemaleUrl => _anonymousFemaleUrl;
+  set anonymousFemaleUrl(String _value) {
+    _anonymousFemaleUrl = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

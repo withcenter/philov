@@ -1,4 +1,5 @@
 import '../backend/backend.dart';
+import '../components/profile_photo_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -38,17 +39,50 @@ class _ChatOtherUserMessageWidgetState
       mainAxisSize: MainAxisSize.max,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0, 6, 0, 0),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(30),
-            child: Image.network(
-              'https://picsum.photos/seed/410/600',
-              width: 60,
-              height: 60,
-              fit: BoxFit.cover,
-            ),
+        StreamBuilder<List<UsersPublicDataRecord>>(
+          stream: queryUsersPublicDataRecord(
+            queryBuilder: (usersPublicDataRecord) =>
+                usersPublicDataRecord.where('userDocumentReference',
+                    isEqualTo:
+                        widget.chatRoomMessageDocument!.userDocumentReference),
+            singleRecord: true,
           ),
+          builder: (context, snapshot) {
+            // Customize what your widget looks like when it's loading.
+            if (!snapshot.hasData) {
+              return Center(
+                child: SizedBox(
+                  width: 50,
+                  height: 50,
+                  child: CircularProgressIndicator(
+                    color: FlutterFlowTheme.of(context).primaryColor,
+                  ),
+                ),
+              );
+            }
+            List<UsersPublicDataRecord> getUserUsersPublicDataRecordList =
+                snapshot.data!;
+            // Return an empty Container when the item does not exist.
+            if (snapshot.data!.isEmpty) {
+              return Container();
+            }
+            final getUserUsersPublicDataRecord =
+                getUserUsersPublicDataRecordList.isNotEmpty
+                    ? getUserUsersPublicDataRecordList.first
+                    : null;
+            return Container(
+              width: 52,
+              height: 52,
+              decoration: BoxDecoration(
+                color: Colors.transparent,
+              ),
+              child: ProfilePhotoWidget(
+                width: 54.0,
+                height: 54.0,
+                userPublicDataDocument: getUserUsersPublicDataRecord,
+              ),
+            );
+          },
         ),
         Padding(
           padding: EdgeInsetsDirectional.fromSTEB(8, 3, 0, 3),

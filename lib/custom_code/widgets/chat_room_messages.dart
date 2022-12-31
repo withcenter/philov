@@ -9,6 +9,9 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 import 'package:fireflow/fireflow.dart';
+import 'package:philov/components/chat_my_message_widget.dart';
+import 'package:philov/components/chat_other_user_message_widget.dart';
+import 'package:philov/components/chat_room_empty_widget.dart';
 
 class ChatRoomMessages extends StatefulWidget {
   const ChatRoomMessages({
@@ -35,17 +38,17 @@ class _ChatRoomMessagesState extends State<ChatRoomMessages> {
       otherUserPublicDataDocument:
           widget.otherUserPublicDataDocument?.reference,
       chatRoomDocumentReference: widget.chatRoomDocument?.reference,
-      onMyMessage: (data, dataRef) => ChatMyMessageWidget(
+      onMyMessage: (message) => ChatMyMessageWidget(
         chatRoomMessageDocument: ChatRoomMessagesRecord.getDocumentFromData(
-          data,
-          dataRef,
+          message.data,
+          message.ref,
         ),
       ),
-      onOtherMessage: (roomRef, data, dataRef) => ChatOtherUserMessageWidget(
+      onOtherMessage: (message) => ChatOtherUserMessageWidget(
         chatRoomDocument: widget.chatRoomDocument,
         chatRoomMessageDocument: ChatRoomMessagesRecord.getDocumentFromData(
-          data,
-          dataRef,
+          message.data,
+          message.ref,
         ),
       ),
       onEmpty: ChatRoomEmptyWidget(),
