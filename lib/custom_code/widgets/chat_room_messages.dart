@@ -1,5 +1,8 @@
 // Automatic FlutterFlow imports
 
+import 'package:philov/components/chat_my_message_widget.dart';
+import 'package:philov/components/chat_other_user_message_widget.dart';
+
 import '../../backend/backend.dart';
 import '../../flutter_flow/flutter_flow_theme.dart';
 import '../../flutter_flow/flutter_flow_util.dart';
@@ -37,8 +40,19 @@ class _ChatRoomMessagesState extends State<ChatRoomMessages> {
       otherUserPublicDataDocument:
           widget.otherUserPublicDataDocument?.reference,
       chatRoomDocumentReference: widget.chatRoomDocument?.reference,
-      onMyMessage: ((data, dataRef) => Text('my message')),
-      onOtherMessage: ((roomRef, data, dataRef) => Text('other message')),
+      onMyMessage: (data, dataRef) => ChatMyMessageWidget(
+        chatRoomMessageDocument: ChatRoomMessagesRecord.getDocumentFromData(
+          data,
+          dataRef,
+        ),
+      ),
+      onOtherMessage: (roomRef, data, dataRef) => ChatOtherUserMessageWidget(
+        chatRoomDocument: widget.chatRoomDocument,
+        chatRoomMessageDocument: ChatRoomMessagesRecord.getDocumentFromData(
+          data,
+          dataRef,
+        ),
+      ),
       onEmpty: Text('empty'),
     );
   }
