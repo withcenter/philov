@@ -248,6 +248,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '프로필',
     },
   },
+  // ChatMessageMenu
+  {
+    '6s2h6r2a': {
+      'en': 'Chat message menu',
+      'ko': '',
+    },
+    'qg630i81': {
+      'en': 'Edit',
+      'ko': '',
+    },
+    'b1a4i3bn': {
+      'en': 'Delete',
+      'ko': '',
+    },
+  },
   // Miscellaneous
   {
     'icc990f6': {

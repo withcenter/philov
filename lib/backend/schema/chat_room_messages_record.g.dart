@@ -25,10 +25,10 @@ class _$ChatRoomMessagesRecordSerializer
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[];
     Object? value;
-    value = object.senderDocumentReference;
+    value = object.userDocumentReference;
     if (value != null) {
       result
-        ..add('senderDocumentReference')
+        ..add('userDocumentReference')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
                 DocumentReference, const [const FullType.nullable(Object)])));
@@ -85,8 +85,8 @@ class _$ChatRoomMessagesRecordSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'senderDocumentReference':
-          result.senderDocumentReference = serializers.deserialize(value,
+        case 'userDocumentReference':
+          result.userDocumentReference = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
                 const FullType.nullable(Object)
               ])) as DocumentReference<Object?>?;
@@ -124,7 +124,7 @@ class _$ChatRoomMessagesRecordSerializer
 
 class _$ChatRoomMessagesRecord extends ChatRoomMessagesRecord {
   @override
-  final DocumentReference<Object?>? senderDocumentReference;
+  final DocumentReference<Object?>? userDocumentReference;
   @override
   final DocumentReference<Object?>? chatRoomDocumentReference;
   @override
@@ -141,7 +141,7 @@ class _$ChatRoomMessagesRecord extends ChatRoomMessagesRecord {
       (new ChatRoomMessagesRecordBuilder()..update(updates))._build();
 
   _$ChatRoomMessagesRecord._(
-      {this.senderDocumentReference,
+      {this.userDocumentReference,
       this.chatRoomDocumentReference,
       this.text,
       this.photoUrl,
@@ -162,7 +162,7 @@ class _$ChatRoomMessagesRecord extends ChatRoomMessagesRecord {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is ChatRoomMessagesRecord &&
-        senderDocumentReference == other.senderDocumentReference &&
+        userDocumentReference == other.userDocumentReference &&
         chatRoomDocumentReference == other.chatRoomDocumentReference &&
         text == other.text &&
         photoUrl == other.photoUrl &&
@@ -176,7 +176,7 @@ class _$ChatRoomMessagesRecord extends ChatRoomMessagesRecord {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc(0, senderDocumentReference.hashCode),
+                    $jc($jc(0, userDocumentReference.hashCode),
                         chatRoomDocumentReference.hashCode),
                     text.hashCode),
                 photoUrl.hashCode),
@@ -187,7 +187,7 @@ class _$ChatRoomMessagesRecord extends ChatRoomMessagesRecord {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'ChatRoomMessagesRecord')
-          ..add('senderDocumentReference', senderDocumentReference)
+          ..add('userDocumentReference', userDocumentReference)
           ..add('chatRoomDocumentReference', chatRoomDocumentReference)
           ..add('text', text)
           ..add('photoUrl', photoUrl)
@@ -201,12 +201,12 @@ class ChatRoomMessagesRecordBuilder
     implements Builder<ChatRoomMessagesRecord, ChatRoomMessagesRecordBuilder> {
   _$ChatRoomMessagesRecord? _$v;
 
-  DocumentReference<Object?>? _senderDocumentReference;
-  DocumentReference<Object?>? get senderDocumentReference =>
-      _$this._senderDocumentReference;
-  set senderDocumentReference(
-          DocumentReference<Object?>? senderDocumentReference) =>
-      _$this._senderDocumentReference = senderDocumentReference;
+  DocumentReference<Object?>? _userDocumentReference;
+  DocumentReference<Object?>? get userDocumentReference =>
+      _$this._userDocumentReference;
+  set userDocumentReference(
+          DocumentReference<Object?>? userDocumentReference) =>
+      _$this._userDocumentReference = userDocumentReference;
 
   DocumentReference<Object?>? _chatRoomDocumentReference;
   DocumentReference<Object?>? get chatRoomDocumentReference =>
@@ -238,7 +238,7 @@ class ChatRoomMessagesRecordBuilder
   ChatRoomMessagesRecordBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _senderDocumentReference = $v.senderDocumentReference;
+      _userDocumentReference = $v.userDocumentReference;
       _chatRoomDocumentReference = $v.chatRoomDocumentReference;
       _text = $v.text;
       _photoUrl = $v.photoUrl;
@@ -266,7 +266,7 @@ class ChatRoomMessagesRecordBuilder
   _$ChatRoomMessagesRecord _build() {
     final _$result = _$v ??
         new _$ChatRoomMessagesRecord._(
-            senderDocumentReference: senderDocumentReference,
+            userDocumentReference: userDocumentReference,
             chatRoomDocumentReference: chatRoomDocumentReference,
             text: text,
             photoUrl: photoUrl,

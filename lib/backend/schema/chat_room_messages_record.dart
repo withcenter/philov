@@ -11,7 +11,7 @@ abstract class ChatRoomMessagesRecord
   static Serializer<ChatRoomMessagesRecord> get serializer =>
       _$chatRoomMessagesRecordSerializer;
 
-  DocumentReference? get senderDocumentReference;
+  DocumentReference? get userDocumentReference;
 
   DocumentReference? get chatRoomDocumentReference;
 
@@ -54,7 +54,7 @@ abstract class ChatRoomMessagesRecord
 }
 
 Map<String, dynamic> createChatRoomMessagesRecordData({
-  DocumentReference? senderDocumentReference,
+  DocumentReference? userDocumentReference,
   DocumentReference? chatRoomDocumentReference,
   String? text,
   String? photoUrl,
@@ -64,7 +64,7 @@ Map<String, dynamic> createChatRoomMessagesRecordData({
     ChatRoomMessagesRecord.serializer,
     ChatRoomMessagesRecord(
       (c) => c
-        ..senderDocumentReference = senderDocumentReference
+        ..userDocumentReference = userDocumentReference
         ..chatRoomDocumentReference = chatRoomDocumentReference
         ..text = text
         ..photoUrl = photoUrl
