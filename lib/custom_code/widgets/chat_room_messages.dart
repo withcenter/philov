@@ -34,6 +34,9 @@ class _ChatRoomMessagesState extends State<ChatRoomMessages> {
   @override
   Widget build(BuildContext context) {
     return ChatRoomMessageList(
+      otherUserPublicDataDocument:
+          widget.otherUserPublicDataDocument?.reference,
+      chatRoomDocumentReference: widget.chatRoomDocument?.reference,
       onMyMessage: ((data, dataRef) => Text('my message')),
       onOtherMessage: ((roomRef, data, dataRef) => Text('other message')),
       onEmpty: Text('empty'),
