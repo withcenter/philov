@@ -1,8 +1,5 @@
 // Automatic FlutterFlow imports
 
-import 'package:philov/components/chat_my_message_widget.dart';
-import 'package:philov/components/chat_other_user_message_widget.dart';
-
 import '../../backend/backend.dart';
 import '../../flutter_flow/flutter_flow_theme.dart';
 import '../../flutter_flow/flutter_flow_util.dart';
@@ -11,9 +8,11 @@ import '../actions/index.dart'; // Imports custom actions
 import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
-import 'package:fireflow/fireflow.dart';
 
 import 'package:fireflow/fireflow.dart';
+import 'package:philov/components/chat_my_message_widget.dart';
+import 'package:philov/components/chat_other_user_message_widget.dart';
+import 'package:philov/components/chat_room_empty_widget.dart';
 
 class ChatRoomMessages extends StatefulWidget {
   const ChatRoomMessages({
@@ -53,11 +52,7 @@ class _ChatRoomMessagesState extends State<ChatRoomMessages> {
           dataRef,
         ),
       ),
-<<<<<<< HEAD
-      onEmpty: Text('empty'),
-=======
       onEmpty: ChatRoomEmptyWidget(),
->>>>>>> origin/flutterflow
     );
   }
 }
