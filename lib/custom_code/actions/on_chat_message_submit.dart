@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'package:fireflow/fireflow.dart';
+
 Future onChatMessageSubmit(
   UsersPublicDataRecord? otherUserPublicDataDocument,
   ChatRoomsRecord? chatRoomDocument,
@@ -14,4 +16,13 @@ Future onChatMessageSubmit(
   String? imagePath,
 ) async {
   // Add your function code here!
+
+  // Note, don't wait for the message to be sent. So, it will perform faster.
+  return ChatService.instance.sendMessage(
+    otherUserPublicDataDocumentReference:
+        otherUserPublicDataDocument?.reference,
+    chatRoomDocumentReference: chatRoomDocument?.reference,
+    text: text,
+    imagePath: imagePath,
+  );
 }

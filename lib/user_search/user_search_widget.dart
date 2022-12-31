@@ -1,10 +1,10 @@
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:provider/provider.dart';
 
 class UserSearchWidget extends StatefulWidget {
   const UserSearchWidget({Key? key}) : super(key: key);
@@ -37,6 +37,8 @@ class _UserSearchWidgetState extends State<UserSearchWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -129,65 +131,55 @@ class _UserSearchWidgetState extends State<UserSearchWidget> {
               itemBuilder: (context, _, listViewIndex) {
                 final listViewUsersPublicDataRecord =
                     _pagingController!.itemList![listViewIndex];
-                return Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.transparent,
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            listViewUsersPublicDataRecord.uid!,
-                            style: FlutterFlowTheme.of(context).subtitle2,
+                return Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+                  child: InkWell(
+                    onTap: () async {
+                      context.pushNamed(
+                        'ChatRoom',
+                        queryParams: {
+                          'otherUserPublicDataDocument': serializeParam(
+                            listViewUsersPublicDataRecord,
+                            ParamType.Document,
                           ),
-                          Text(
-                            listViewUsersPublicDataRecord.displayName!,
-                            style: FlutterFlowTheme.of(context).bodyText1,
+                        }.withoutNulls,
+                        extra: <String, dynamic>{
+                          'otherUserPublicDataDocument':
+                              listViewUsersPublicDataRecord,
+                        },
+                      );
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                listViewUsersPublicDataRecord.uid!,
+                                style: FlutterFlowTheme.of(context).subtitle2,
+                              ),
+                              Text(
+                                listViewUsersPublicDataRecord.displayName!,
+                                style: FlutterFlowTheme.of(context).bodyText1,
+                              ),
+                            ],
+                          ),
+                          Icon(
+                            Icons.chevron_right,
+                            color: Colors.black,
+                            size: 24,
                           ),
                         ],
                       ),
-                      FFButtonWidget(
-                        onPressed: () async {
-                          context.pushNamed(
-                            'ChatRoom',
-                            queryParams: {
-                              'otherUserPublicDataDocument': serializeParam(
-                                listViewUsersPublicDataRecord,
-                                ParamType.Document,
-                              ),
-                            }.withoutNulls,
-                            extra: <String, dynamic>{
-                              'otherUserPublicDataDocument':
-                                  listViewUsersPublicDataRecord,
-                            },
-                          );
-                        },
-                        text: FFLocalizations.of(context).getText(
-                          '0b6z289j' /* Chat */,
-                        ),
-                        options: FFButtonOptions(
-                          width: 130,
-                          height: 40,
-                          color: FlutterFlowTheme.of(context).primaryColor,
-                          textStyle:
-                              FlutterFlowTheme.of(context).subtitle2.override(
-                                    fontFamily: 'Poppins',
-                                    color: Colors.white,
-                                  ),
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1,
-                          ),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 );
               },

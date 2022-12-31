@@ -174,10 +174,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'User Search',
       'ko': '사용자 검색',
     },
-    '0b6z289j': {
-      'en': 'Chat',
-      'ko': '채팅',
-    },
     'nvo7t3k7': {
       'en': 'Home',
       'ko': '',
@@ -185,9 +181,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ChatRoom
   {
-    'i22zh3xb': {
-      'en': 'Input message',
-      'ko': '메세지를 입력하세요.',
+    'bg043vfq': {
+      'en': 'Input chat message',
+      'ko': '메시지를 입력 해 주세요.',
     },
     'ekk0em2s': {
       'en': 'Home',
@@ -229,6 +225,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '',
     },
   },
+  // Chat
+  {
+    'a2zza5od': {
+      'en': 'Chat',
+      'ko': '채팅',
+    },
+    'lzeerkgp': {
+      'en': 'Group Chat',
+      'ko': '',
+    },
+    'auld96zg': {
+      'en': 'Home',
+      'ko': '',
+    },
+  },
   // Main
   {
     'u4s3i1gm': {
@@ -250,6 +261,36 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '1neh66ue': {
       'en': 'Profile',
       'ko': '프로필',
+    },
+    'vt0u7plg': {
+      'en': 'Chat',
+      'ko': '채팅',
+    },
+  },
+  // ChatMessageMenu
+  {
+    'tc3voj8g': {
+      'en': 'Chat message menu',
+      'ko': '',
+    },
+    'sg56oybc': {
+      'en': 'Edit',
+      'ko': '',
+    },
+    'c85txbsd': {
+      'en': 'Delete',
+      'ko': '',
+    },
+  },
+  // ChatRoomEmpty
+  {
+    '9luqhatd': {
+      'en': 'No messages.',
+      'ko': '채팅 메시지가 없습니다.',
+    },
+    'ej3pxz2i': {
+      'en': 'Send a chat message.',
+      'ko': '메시지를 전송 해 보세요.',
     },
   },
   // Miscellaneous

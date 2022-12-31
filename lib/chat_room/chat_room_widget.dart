@@ -1,13 +1,11 @@
 import '../backend/backend.dart';
-import '../backend/firebase_storage/storage.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/upload_media.dart';
-import '../custom_code/actions/index.dart' as actions;
 import '../custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class ChatRoomWidget extends StatefulWidget {
   const ChatRoomWidget({
@@ -24,29 +22,28 @@ class ChatRoomWidget extends StatefulWidget {
 }
 
 class _ChatRoomWidgetState extends State<ChatRoomWidget> {
-  bool isMediaUploading = false;
-  String uploadedFileUrl = '';
-
-  TextEditingController? messageController;
+  TextEditingController? textController;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    messageController = TextEditingController();
+    textController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
     _unfocusNode.dispose();
-    messageController?.dispose();
+    textController?.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -89,100 +86,45 @@ class _ChatRoomWidgetState extends State<ChatRoomWidget> {
                   ),
                 ),
               ),
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.transparent,
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    FlutterFlowIconButton(
-                      borderColor: Colors.transparent,
-                      borderRadius: 30,
-                      borderWidth: 1,
-                      buttonSize: 60,
-                      icon: Icon(
-                        Icons.photo_camera,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        size: 30,
-                      ),
-                      onPressed: () async {
-                        final selectedMedia =
-                            await selectMediaWithSourceBottomSheet(
-                          context: context,
-                          maxWidth: 600.00,
-                          maxHeight: 600.00,
-                          imageQuality: 90,
-                          allowPhoto: true,
-                        );
-                        if (selectedMedia != null &&
-                            selectedMedia.every((m) =>
-                                validateFileFormat(m.storagePath, context))) {
-                          setState(() => isMediaUploading = true);
-                          var downloadUrls = <String>[];
-                          try {
-                            showUploadMessage(
-                              context,
-                              'Uploading file...',
-                              showLoading: true,
-                            );
-                            downloadUrls = (await Future.wait(
-                              selectedMedia.map(
-                                (m) async =>
-                                    await uploadData(m.storagePath, m.bytes),
-                              ),
-                            ))
-                                .where((u) => u != null)
-                                .map((u) => u!)
-                                .toList();
-                          } finally {
-                            ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                            isMediaUploading = false;
-                          }
-                          if (downloadUrls.length == selectedMedia.length) {
-                            setState(
-                                () => uploadedFileUrl = downloadUrls.first);
-                            showUploadMessage(context, 'Success!');
-                          } else {
-                            setState(() {});
-                            showUploadMessage(
-                                context, 'Failed to upload media');
-                            return;
-                          }
-                        }
-                      },
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  FlutterFlowIconButton(
+                    borderColor: Colors.transparent,
+                    borderRadius: 30,
+                    borderWidth: 1,
+                    buttonSize: 60,
+                    icon: Icon(
+                      Icons.photo_camera,
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      size: 30,
                     ),
-                    Expanded(
+                    onPressed: () {
+                      print('IconButton pressed ...');
+                    },
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
                       child: TextFormField(
-                        controller: messageController,
-                        onFieldSubmitted: (_) async {
-                          await actions.onChatMessageSubmit(
-                            widget.otherUserPublicDataDocument,
-                            widget.chatRoomDocument,
-                            messageController!.text,
-                            uploadedFileUrl,
-                          );
-                          setState(() {
-                            messageController?.clear();
-                          });
-                        },
+                        controller: textController,
                         autofocus: true,
                         obscureText: false,
                         decoration: InputDecoration(
-                          labelText: FFLocalizations.of(context).getText(
-                            'i22zh3xb' /* Input message */,
+                          hintText: FFLocalizations.of(context).getText(
+                            'bg043vfq' /* Input chat message */,
                           ),
                           hintStyle: FlutterFlowTheme.of(context).bodyText2,
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: Color(0x3457636C),
+                              color: Color(0x2A57636C),
                               width: 1,
                             ),
                             borderRadius: BorderRadius.circular(8),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: Color(0x3457636C),
+                              color: Color(0x2A57636C),
                               width: 1,
                             ),
                             borderRadius: BorderRadius.circular(8),
@@ -205,30 +147,8 @@ class _ChatRoomWidgetState extends State<ChatRoomWidget> {
                         style: FlutterFlowTheme.of(context).bodyText1,
                       ),
                     ),
-                    FlutterFlowIconButton(
-                      borderColor: Colors.transparent,
-                      borderRadius: 30,
-                      borderWidth: 1,
-                      buttonSize: 60,
-                      icon: Icon(
-                        Icons.send,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        size: 30,
-                      ),
-                      onPressed: () async {
-                        await actions.onChatMessageSubmit(
-                          widget.otherUserPublicDataDocument,
-                          widget.chatRoomDocument,
-                          messageController!.text,
-                          uploadedFileUrl,
-                        );
-                        setState(() {
-                          messageController?.clear();
-                        });
-                      },
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ],
           ),

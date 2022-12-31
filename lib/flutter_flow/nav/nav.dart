@@ -124,6 +124,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Profile',
               path: 'profile',
               builder: (context, params) => ProfileWidget(),
+            ),
+            FFRoute(
+              name: 'Chat',
+              path: 'chat',
+              builder: (context, params) => ChatWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

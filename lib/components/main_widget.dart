@@ -6,6 +6,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class MainWidget extends StatefulWidget {
   const MainWidget({Key? key}) : super(key: key);
@@ -24,6 +25,8 @@ class _MainWidgetState extends State<MainWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
@@ -163,6 +166,28 @@ class _MainWidgetState extends State<MainWidget> {
           },
           text: FFLocalizations.of(context).getText(
             '1neh66ue' /* Profile */,
+          ),
+          options: FFButtonOptions(
+            width: 130,
+            height: 40,
+            color: FlutterFlowTheme.of(context).primaryColor,
+            textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                  fontFamily: 'Poppins',
+                  color: Colors.white,
+                ),
+            borderSide: BorderSide(
+              color: Colors.transparent,
+              width: 1,
+            ),
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+        FFButtonWidget(
+          onPressed: () async {
+            context.pushNamed('Chat');
+          },
+          text: FFLocalizations.of(context).getText(
+            'vt0u7plg' /* Chat */,
           ),
           options: FFButtonOptions(
             width: 130,
