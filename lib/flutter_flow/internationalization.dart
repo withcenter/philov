@@ -250,15 +250,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ChatMessageMenu
   {
-    '6s2h6r2a': {
+    't3qv0ev0': {
       'en': 'Chat message menu',
       'ko': '',
     },
-    'qg630i81': {
+    'n9pcv2k9': {
       'en': 'Edit',
       'ko': '',
     },
-    'b1a4i3bn': {
+    'qg66j530': {
       'en': 'Delete',
       'ko': '',
     },
