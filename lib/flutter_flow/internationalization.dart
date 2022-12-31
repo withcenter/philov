@@ -231,7 +231,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Chat',
       'ko': '채팅',
     },
-    'kdkgp372': {
+    'lzeerkgp': {
       'en': 'Group Chat',
       'ko': '',
     },
@@ -269,15 +269,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ChatMessageMenu
   {
-    '6o6fig6r': {
+    'tc3voj8g': {
       'en': 'Chat message menu',
       'ko': '',
     },
-    'jfqal8zg': {
+    'sg56oybc': {
       'en': 'Edit',
       'ko': '',
     },
-    'cqogspn6': {
+    'c85txbsd': {
       'en': 'Delete',
       'ko': '',
     },

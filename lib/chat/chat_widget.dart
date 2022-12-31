@@ -243,7 +243,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                               children: [
                                 Text(
                                   FFLocalizations.of(context).getText(
-                                    'kdkgp372' /* Group Chat */,
+                                    'lzeerkgp' /* Group Chat */,
                                   ),
                                   style: FlutterFlowTheme.of(context).bodyText1,
                                 ),
