@@ -59,7 +59,7 @@ class _ChatRoomEmptyWidgetState extends State<ChatRoomEmptyWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(32, 32, 32, 0),
                   child: Text(
                     FFLocalizations.of(context).getText(
-                      'j2f3davr' /* No messages. */,
+                      '3qtja81z' /* No messages. */,
                     ),
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).bodyText1,
@@ -69,7 +69,7 @@ class _ChatRoomEmptyWidgetState extends State<ChatRoomEmptyWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(24, 8, 24, 0),
                   child: Text(
                     FFLocalizations.of(context).getText(
-                      '8r7u2xrw' /* Send a chat message. */,
+                      'rf95zdtk' /* Send a chat message. */,
                     ),
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).subtitle2,
