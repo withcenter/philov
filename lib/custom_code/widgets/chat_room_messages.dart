@@ -53,7 +53,11 @@ class _ChatRoomMessagesState extends State<ChatRoomMessages> {
           dataRef,
         ),
       ),
+<<<<<<< HEAD
       onEmpty: Text('empty'),
+=======
+      onEmpty: ChatRoomEmptyWidget(),
+>>>>>>> origin/flutterflow
     );
   }
 }
