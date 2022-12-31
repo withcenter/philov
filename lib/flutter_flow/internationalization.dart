@@ -250,28 +250,28 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ChatMessageMenu
   {
-    'vr7ocsz3': {
+    'xojayz1v': {
       'en': 'Chat message menu',
       'ko': '',
     },
-    'zgkuwxkh': {
+    '93pps8o0': {
       'en': 'Edit',
       'ko': '',
     },
-    'n9x2zj16': {
+    'ek9t9s2v': {
       'en': 'Delete',
       'ko': '',
     },
   },
   // ChatRoomEmpty
   {
-    '3qtja81z': {
+    '9luqhatd': {
       'en': 'No messages.',
-      'ko': '',
+      'ko': '채팅 메시지가 없습니다.',
     },
-    'rf95zdtk': {
+    'ej3pxz2i': {
       'en': 'Send a chat message.',
-      'ko': '',
+      'ko': '메시지를 전송 해 보세요.',
     },
   },
   // Miscellaneous
