@@ -1,4 +1,6 @@
 // Automatic FlutterFlow imports
+import 'package:fireflow/fireflow.dart';
+
 import '../../backend/backend.dart';
 import '../../flutter_flow/flutter_flow_theme.dart';
 import '../../flutter_flow/flutter_flow_util.dart';
@@ -14,4 +16,13 @@ Future onChatMessageSubmit(
   String? imagePath,
 ) async {
   // Add your function code here!
+
+  // Note, don't wait for the message to be sent. So, it will perform faster.
+  return ChatService.instance.sendMessage(
+    otherUserPublicDataDocumentReference:
+        otherUserPublicDataDocument?.reference,
+    chatRoomDocumentReference: chatRoomDocument?.reference,
+    text: text,
+    imagePath: imagePath,
+  );
 }
