@@ -225,6 +225,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '',
     },
   },
+  // Chat
+  {
+    'a2zza5od': {
+      'en': 'Chat',
+      'ko': '채팅',
+    },
+    'lzeerkgp': {
+      'en': 'Group Chat',
+      'ko': '',
+    },
+    'auld96zg': {
+      'en': 'Home',
+      'ko': '',
+    },
+  },
   // Main
   {
     'u4s3i1gm': {
@@ -247,18 +262,22 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Profile',
       'ko': '프로필',
     },
+    'vt0u7plg': {
+      'en': 'Chat',
+      'ko': '채팅',
+    },
   },
   // ChatMessageMenu
   {
-    'gcz9oa46': {
+    'tc3voj8g': {
       'en': 'Chat message menu',
       'ko': '',
     },
-    '8pn55k5e': {
+    'sg56oybc': {
       'en': 'Edit',
       'ko': '',
     },
-    'nl2aqbat': {
+    'c85txbsd': {
       'en': 'Delete',
       'ko': '',
     },

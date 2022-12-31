@@ -182,6 +182,28 @@ class _MainWidgetState extends State<MainWidget> {
             borderRadius: BorderRadius.circular(8),
           ),
         ),
+        FFButtonWidget(
+          onPressed: () async {
+            context.pushNamed('Chat');
+          },
+          text: FFLocalizations.of(context).getText(
+            'vt0u7plg' /* Chat */,
+          ),
+          options: FFButtonOptions(
+            width: 130,
+            height: 40,
+            color: FlutterFlowTheme.of(context).primaryColor,
+            textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                  fontFamily: 'Poppins',
+                  color: Colors.white,
+                ),
+            borderSide: BorderSide(
+              color: Colors.transparent,
+              width: 1,
+            ),
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
       ],
     );
   }

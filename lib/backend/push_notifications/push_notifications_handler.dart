@@ -100,6 +100,7 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
             data, 'chatRoomDocument', ChatRoomsRecord.serializer),
       ),
   'Profile': (data) async => ProfileWidget(),
+  'Chat': (data) async => ChatWidget(),
 };
 
 bool hasMatchingParameters(Map<String, dynamic> data, Set<String> params) =>
