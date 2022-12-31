@@ -35,9 +35,20 @@ class _ChatRoomMessagesState extends State<ChatRoomMessages> {
       otherUserPublicDataDocument:
           widget.otherUserPublicDataDocument?.reference,
       chatRoomDocumentReference: widget.chatRoomDocument?.reference,
-      onMyMessage: ((data, dataRef) => Text('my message')),
-      onOtherMessage: ((roomRef, data, dataRef) => Text('other message')),
-      onEmpty: Text('empty'),
+      onMyMessage: (data, dataRef) => ChatMyMessageWidget(
+        chatRoomMessageDocument: ChatRoomMessagesRecord.getDocumentFromData(
+          data,
+          dataRef,
+        ),
+      ),
+      onOtherMessage: (roomRef, data, dataRef) => ChatOtherUserMessageWidget(
+        chatRoomDocument: widget.chatRoomDocument,
+        chatRoomMessageDocument: ChatRoomMessagesRecord.getDocumentFromData(
+          data,
+          dataRef,
+        ),
+      ),
+      onEmpty: ChatRoomEmptyWidget(),
     );
   }
 }

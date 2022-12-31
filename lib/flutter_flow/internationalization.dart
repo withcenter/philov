@@ -250,16 +250,27 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ChatMessageMenu
   {
-    't3qv0ev0': {
+    'p41blcbw': {
       'en': 'Chat message menu',
       'ko': '',
     },
-    'n9pcv2k9': {
+    'ktr2v4no': {
       'en': 'Edit',
       'ko': '',
     },
-    'qg66j530': {
+    'ktb6bbp4': {
       'en': 'Delete',
+      'ko': '',
+    },
+  },
+  // ChatRoomEmpty
+  {
+    'j2f3davr': {
+      'en': 'No messages.',
+      'ko': '',
+    },
+    '8r7u2xrw': {
+      'en': 'Send a chat message.',
       'ko': '',
     },
   },
