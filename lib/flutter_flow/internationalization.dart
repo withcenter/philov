@@ -174,10 +174,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'User Search',
       'ko': '사용자 검색',
     },
-    '0b6z289j': {
-      'en': 'Chat',
-      'ko': '채팅',
-    },
     'nvo7t3k7': {
       'en': 'Home',
       'ko': '',
